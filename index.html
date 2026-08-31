@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#dff1ff" />
+  <meta name="description" content="楚小住｜湖北省保租房智能体本地交互原型：先选城市，再做类型分流、资格预判、项目匹配、订阅与官方办理连接。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231677ff'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' fill='white'%3E%E4%BD%8F%3C/text%3E%3C/svg%3E" />
+  <title>楚小住｜湖北省保租房智能体</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <main class="demo-shell">
+    <aside class="story-panel" aria-label="产品说明">
+      <div class="story-brand"><span class="brand-glyph">楚</span><span>楚小住｜湖北省保租房智能体</span></div>
+      <p class="overline">PROTOTYPE · 2026.08</p>
+      <h1>先选城市，再把资格、<br />房源、办理一次理清。</h1>
+      <p class="story-lead">建设湖北省级住房保障智能服务入口。群众先选择实际申请城市，再说明就业、住房、预算和通勤需求；系统按属地完成住房类型分流、项目级资格预判、房源匹配、状态核验和官方办理连接。</p>
+      <p class="audience-line"><b>主要解决：</b>省市政策层级多、各城市规则不同、项目入口分散、重复咨询多，以及历史公告容易被误当成当前房源。</p>
+      <ol class="story-flow">
+        <li class="active"><i>1</i><div><b>先属地、再分流</b><span>锁定申请城市，三类住房分别判断</span></div></li>
+        <li><i>2</i><div><b>看预算、算通勤</b><span>匹配项目并解释推荐依据</span></div></li>
+        <li><i>3</i><div><b>核房态、去办理</b><span>验明有效入口后回到官方申请</span></div></li>
+      </ol>
+      <div class="principle-card"><span>三级口径</span><p>省级政策定方向；城市、项目和批次定准入、租金、材料与流程；实时房态与仍有效属地入口才决定“当前可办”。</p></div>
+    </aside>
+
+    <section class="phone-wrap" aria-label="湖北省保租房智能体交互原型">
+      <div class="phone">
+        <header class="app-head">
+          <div class="statusbar"><span>9:41</span><span aria-label="网络和电量">●●● 5G ▰</span></div>
+          <div class="app-nav">
+            <button class="icon-btn" type="button" data-action="back" aria-label="返回">‹</button>
+            <div class="agent-id"><span class="agent-mark">住</span><div><b>楚小住</b><small><i></i> 湖北省保租房智能体</small></div></div>
+            <button class="icon-btn small-dots" type="button" data-open-sheet="about" aria-label="关于本原型">•••</button>
+          </div>
+        </header>
+
+        <div class="screen-stack" id="screenStack">
+          <section class="app-screen active" data-screen="home" aria-labelledby="homeTitle">
+            <div class="screen-scroll">
+              <div class="hello-row"><div><span>你好，在鄂安居第一步</span><h2 id="homeTitle" tabindex="-1">先选城市，再看适合哪类房</h2></div><button class="source-pill" type="button" data-open-sheet="sources"><i aria-hidden="true"></i> 官方源</button></div>
+
+              <article class="eligibility-passport">
+                <div class="passport-top"><span class="passport-label">荆楚安居匹配卡</span><span class="passport-status" id="passportStatus">待完善 6 项</span></div>
+                <div class="passport-score"><b id="homeMatchCount">6</b><span>个样例项目<br />进入演示排序</span></div>
+                <div class="signal-line"><i></i><i></i><i></i><i class="muted"></i><i class="muted"></i></div>
+                <div class="passport-bottom"><span>当前画像</span><b id="profileSummary">武汉市 · 新市民 · 无房待确认 · 通勤点待选</b></div>
+                <button class="passport-cta" type="button" data-nav="qualify">2 分钟完成资格预判 <span>→</span></button>
+              </article>
+
+              <div class="section-title"><div><span>一条线办到底</span><h3>你的安居任务板</h3></div><span class="tiny-link">不走弯路</span></div>
+              <div class="task-grid">
+                <button class="task-card qualify" type="button" data-nav="qualify"><span class="task-icon">✓</span><b>资格预判</b><small>6 个关键条件</small><em>开始</em></button>
+                <button class="task-card match" type="button" data-nav="match"><span class="task-icon">⌖</span><b>通勤找房</b><small>预算与路程一起算</small><em id="homeTaskMatchCount">2 个同城样例</em></button>
+                <button class="task-card track" type="button" data-nav="track"><span class="task-icon">◴</span><b>上新提醒</b><small>订阅区域与预算</small><em>未开启</em></button>
+              </div>
+
+              <article class="insight-card">
+                <div class="insight-visual" aria-hidden="true"><span class="map-river"></span><span class="map-dot d1"></span><span class="map-dot d2"></span><span class="map-dot d3"></span><b>楚</b></div>
+                <div class="insight-copy"><span class="live-label">省级入口 · 城市级规则</span><h3>一省一入口，一城一套规则</h3><p>先锁定武汉、宜昌或襄阳，再比较项目预算与通勤，避免跨城市串用门槛。</p><button type="button" data-nav="match">查看城市样例 →</button></div>
+              </article>
+
+              <div class="policy-note"><span>规则边界</span><p>公租房、保租房、人才住房分别核验；一地规则不能套到另一市州，历史公告不能代表当前房态。</p></div>
+            </div>
+          </section>
+
+          <section class="app-screen" data-screen="qualify" aria-labelledby="qualifyTitle">
+            <div class="screen-scroll qualify-scroll">
+              <div class="page-kicker">资格预判 · 不是正式审核</div>
+              <div class="page-head"><div><h2 id="qualifyTitle" tabindex="-1">只问影响结果的 6 件事</h2><p>先定属地，答案仅保存在当前页面会话。</p></div><span class="step-count" id="stepCount">1/6</span></div>
+              <div class="step-track" id="stepTrack"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+
+              <article class="question-card" id="questionCard" aria-live="polite"></article>
+              <div class="why-card"><span>为什么要问？</span><p id="whyText">公租房、保租房、人才专项等制度和项目规则不同，不能互相套用。</p></div>
+
+              <section class="precheck-result hidden" id="precheckResult" aria-live="polite">
+                <div class="result-seal"><span>预判结果</span><b id="resultLabel">可继续分流</b><small id="resultConfidence">依据 4 项已知条件</small></div>
+                <h3 id="resultTitle" tabindex="-1">建议将人才专项与保租房分别核验</h3>
+                <ul id="resultReasons"></ul>
+                <div class="result-warning"><b>只做分流，不跨城、不串类</b><span>住房核查、就业、人才类别和优惠叠加均以申请城市及拟申请项目/批次公告和正式审核为准。</span></div>
+                <button class="primary-btn" type="button" data-nav="match">按此结果找房 <span>→</span></button>
+                <button class="text-btn" type="button" data-action="restart-qualify">重新预判</button>
+              </section>
+            </div>
+          </section>
+
+          <section class="app-screen" data-screen="match" aria-labelledby="matchTitle">
+            <div class="match-fixed">
+              <div class="page-kicker">房源匹配 · 样例数据 · 非实时房态</div>
+              <div class="page-head compact"><div><h2 id="matchTitle" tabindex="-1">按城市匹配预算和通勤</h2><p id="matchSummary">武汉市 · 光谷广场 · 2200 元内</p></div><button class="filter-btn" type="button" data-open-sheet="filters">筛选 <span id="filterCount">3</span></button></div>
+              <div class="filter-chips"><button type="button" data-quick-city="武汉市">城 武汉市</button><button type="button" data-quick-work="光谷广场">⌖ 光谷广场</button><button type="button" data-quick-budget="2200">¥ 2200 内</button><button type="button" data-open-sheet="filters">＋ 更多</button></div>
+            </div>
+            <div class="listing-scroll" id="listingScroll"><div class="data-state" id="dataState" role="status" aria-live="polite">正在载入样例数据…</div><div class="listing-list" id="listingList"></div></div>
+          </section>
+
+          <section class="app-screen" data-screen="track" aria-labelledby="trackTitle">
+            <div class="screen-scroll track-scroll">
+              <div class="page-kicker">订阅与办理</div>
+              <div class="page-head"><div><h2 id="trackTitle" tabindex="-1">房源变化，不用每天刷</h2><p>提醒不代表可办，提交前仍查实时房态与有效入口。</p></div><span class="notify-orb" aria-hidden="true">◴</span></div>
+              <article class="subscription-card">
+                <div class="subscription-head"><span>我的订阅条件</span><button type="button" data-open-sheet="filters">修改</button></div>
+                <div class="sub-route"><span>城市 / 工作地</span><b id="subWorkplace">武汉市 · 光谷广场</b><i>↓</i><span>月预算</span><b id="subBudget">≤ 2,200 元</b></div>
+                <div class="sub-options"><label><input type="checkbox" id="newListing" checked /><span>新项目 / 新批次</span></label><label><input type="checkbox" id="deadline" checked /><span>报名截止前 3 天</span></label><label><input type="checkbox" id="priceChange" /><span>租金或优惠变化</span></label></div>
+                <button class="primary-btn" type="button" id="subscribeBtn" aria-pressed="false">开启样例订阅</button>
+                <p class="privacy-line">本地原型不申请手机号，不发送真实消息。</p>
+              </article>
+
+              <div class="section-title"><div><span>正式办理连接</span><h3>你还需要完成这些步骤</h3></div></div>
+              <div class="process-list">
+                <div class="process-item done"><i>✓</i><div><b>资格预判</b><span>智能体提供可能性与待核验项</span></div><em>辅助</em></div>
+                <div class="process-item"><i>2</i><div><b>先选属地，再判断当前可办</b><span>进入湖北政务服务网选择实际城市；项目房态仍须向属地住建或运营方核验</span></div><button type="button" data-open-official="list">去官方入口</button></div>
+                <div class="process-item"><i>3</i><div><b>实人认证并提交</b><span>在项目公告指定渠道 / 运营方官方入口完成</span></div><em>官方</em></div>
+                <div class="process-item"><i>4</i><div><b>审核、选房与签约</b><span>以运营方通知和审核结果为准</span></div><em>官方</em></div>
+              </div>
+              <button class="safe-guide" type="button" data-open-sheet="safety"><span>盾</span><div><b>签约前安全清单</b><small>验真房源、实地看房、书面合同</small></div><i>›</i></button>
+            </div>
+          </section>
+        </div>
+
+        <nav class="bottom-nav" aria-label="主要功能">
+          <button class="active" type="button" data-nav="home" aria-current="page"><i aria-hidden="true">⌂</i><span>安居台</span></button>
+          <button type="button" data-nav="qualify"><i aria-hidden="true">◇</i><span>测资格</span></button>
+          <button type="button" data-nav="match"><i aria-hidden="true">⌖</i><span>找房</span></button>
+          <button type="button" data-nav="track"><i aria-hidden="true">◴</i><span>进度</span></button>
+        </nav>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <aside class="evidence-panel" aria-label="可信度说明">
+      <div class="evidence-head"><span>可信服务状态</span><i></i></div>
+      <h2>每个结论都能回答<br />“依据什么”。</h2>
+      <div class="evidence-stat"><b>13</b><span>条湖北官方来源<br />进入样例知识底座</span></div>
+      <div class="evidence-list">
+        <div><i class="green">✓</i><p><b>省市分层</b><span>省定方向，城市与项目定具体规则</span></p></div>
+        <div><i class="blue">↗</i><p><b>跨城不串规</b><span>武汉、宜昌、襄阳分别核验</span></p></div>
+        <div><i class="orange">!</i><p><b>历史不冒充实时</b><span>项目案例标注时点并要求回源</span></p></div>
+      </div>
+      <button class="evidence-button" type="button" data-open-sheet="sources">查看政策与数据依据</button>
+      <p class="demo-hint">推荐演示路径：<br /><b>测资格 → 一键带入示例 → 按结果找房 → 查看匹配依据 → 开启订阅</b></p>
+    </aside>
+  </main>
+
+  <div class="sheet-layer" id="sheetLayer" aria-hidden="true">
+    <button class="sheet-backdrop" type="button" data-close-sheet aria-label="关闭弹层" tabindex="-1"></button>
+    <section class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-describedby="sheetBody">
+      <div class="sheet-grabber" aria-hidden="true"></div>
+      <header><div><span id="sheetEyebrow">信息</span><h2 id="sheetTitle">详情</h2></div><button type="button" data-close-sheet aria-label="关闭">×</button></header>
+      <div class="sheet-body" id="sheetBody" tabindex="0" aria-label="弹层内容"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
